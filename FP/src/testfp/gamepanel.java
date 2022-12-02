@@ -20,7 +20,7 @@ import testfp.entity.player;
 public class gamepanel extends JPanel implements Runnable{
     //setting
     final int originalTileSize = 16;
-    final int scale = 4;
+    final int scale = 3;
     
     public final int tileSize = originalTileSize * scale;
     public final int maxScreenColumn = 9;
@@ -38,7 +38,7 @@ public class gamepanel extends JPanel implements Runnable{
     
     public gamepanel(){
         this.setPreferredSize(new Dimension(ScreenWidth, ScreenHeight));
-        this.setBackground(Color.DARK_GRAY);
+        this.setBackground(Color.BLACK);
         this.setDoubleBuffered(true);
         this.addKeyListener(kh);
         this.setFocusable(true);
@@ -55,7 +55,6 @@ public class gamepanel extends JPanel implements Runnable{
         double nextDrawTime = System.nanoTime() - drawInterval;
         
         while(gameThread != null){
-            System.out.println(Player.x +" " +Player.y);
             update();//updating the position
             
             repaint();//repaint the character with the updated position

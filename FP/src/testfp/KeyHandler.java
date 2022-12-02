@@ -15,7 +15,8 @@ public class KeyHandler implements KeyListener{
     public boolean upPressed, 
                    downPressed, 
                    leftPressed,
-                   rightPressed;
+                   rightPressed,
+                   shootPressed;
     
     @Override
     public void keyTyped(KeyEvent e) {
@@ -37,6 +38,9 @@ public class KeyHandler implements KeyListener{
         else if(code == KeyEvent.VK_D || code == KeyEvent.VK_RIGHT){
             rightPressed = true;
         }
+        else if(code == KeyEvent.VK_SPACE){
+            shootPressed = true;
+        }
         
     }
 
@@ -55,6 +59,9 @@ public class KeyHandler implements KeyListener{
         }
         else if(code == KeyEvent.VK_D || code == KeyEvent.VK_RIGHT){
             rightPressed = false;
+        }
+         else if(code == KeyEvent.VK_SPACE){
+            shootPressed = false;
         }
     }
     

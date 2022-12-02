@@ -7,6 +7,7 @@ package testfp.entity;
 import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
+import java.awt.Rectangle;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
 import java.util.logging.Level;
@@ -20,8 +21,13 @@ import testfp.gamepanel;
  * @author fauza
  */
 public class player extends Sprite{
+    boolean readyToShoot, shot = false;
     gamepanel gp;
     KeyHandler kh;
+    Rectangle Bullet;
+    bullet Bullt;
+    int bspeed = 8;
+    int by;
     
     public player(gamepanel gp, KeyHandler kh){
         this.gp = gp;
@@ -52,7 +58,6 @@ public class player extends Sprite{
     }
     
     public void update(){
-        System.out.println(direction);
         if(kh.upPressed == true){
             direction = "idle";
             y -= speed;
@@ -69,6 +74,19 @@ public class player extends Sprite{
             direction = "right";
             x += speed;
         }
+        else if(kh.shootPressed ==  true){
+            if(Bullt ==  null){
+                readyToShoot = true;
+            }
+            
+            if(readyToShoot == true){
+                by = y;
+                Bullt = new bullet(x, y+8, gp.tileSize, gp.tileSize);
+                shot = true;
+                System.out.println("shots fired");
+            }
+        } 
+
         
         
         if(y < 0){
@@ -97,6 +115,8 @@ public class player extends Sprite{
             
             spriteCounter = 0;
         }
+        
+        shoot();
     }
     
     public void draw(Graphics2D g2){
@@ -125,5 +145,23 @@ public class player extends Sprite{
                 break;
         }
         g2.drawImage(img, x, y, gp.tileSize, gp.tileSize, null);
+        if(shot){
+//            g2.setColor(Color.GREEN);
+//            g2.fillRect(Bullet.x, Bullet.y, Bullet.width, Bullet.height);
+            g2.drawImage(Bullt.idle1, Bullt.x, Bullt.y, Bullt.width, Bullt.height, null);
+        }
+    }
+    
+    public void shoot(){
+        if(shot){
+            Bullt.y -= bspeed;
+            by = Bullt.y;
+        }
+        
+        if(by < 0){
+            readyToShoot = true;
+        }else{
+            readyToShoot = false;
+        }
     }
 }

@@ -7,8 +7,10 @@ package testfp.entity;
 import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
+import java.awt.Rectangle;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.imageio.ImageIO;
@@ -20,8 +22,13 @@ import testfp.gamepanel;
  * @author fauza
  */
 public class player extends Sprite{
+    public boolean readyToShoot = true, shot = false;
     gamepanel gp;
     KeyHandler kh;
+    Rectangle Bullet;
+    public bullet Bullt;
+    int bspeed = 8;
+    public int by,bx;
     
     public player(gamepanel gp, KeyHandler kh){
         this.gp = gp;
@@ -52,7 +59,6 @@ public class player extends Sprite{
     }
     
     public void update(){
-        System.out.println(direction);
         if(kh.upPressed == true){
             direction = "idle";
             y -= speed;
@@ -69,7 +75,22 @@ public class player extends Sprite{
             direction = "right";
             x += speed;
         }
-        
+        else if(kh.shootPressed ==  true){
+            if(Bullt ==  null){
+                readyToShoot = true;
+            }
+            
+            if(readyToShoot == true){
+                bx = x;
+                by = y;
+                Bullt = new bullet(x+12, y+8, gp.tileSize/2, gp.tileSize/2);
+                shot = true;
+            }
+            
+          
+        } 
+
+        shoot();
         
         if(y < 0){
             y = 0;
@@ -125,5 +146,22 @@ public class player extends Sprite{
                 break;
         }
         g2.drawImage(img, x, y, gp.tileSize, gp.tileSize, null);
+        if(shot){
+            Bullt.draw(g2);
+        }
+    }
+    
+    public void shoot(){
+        if(shot){
+            Bullt.y -= bspeed;
+            by = Bullt.y;
+        }
+        
+        if(by < 0){
+            readyToShoot = true;
+        }else{
+            readyToShoot = false;
+            
+        }
     }
 }

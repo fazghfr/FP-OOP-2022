@@ -41,7 +41,7 @@ public class gamepanel extends JPanel implements Runnable{
     player Player = new player(this, kh);
     
     ArrayList<enemy> enemies = new ArrayList<>();
-    int level = 1;
+    int level = 0;
     int enemiesLeft = 0;
     
     
@@ -92,11 +92,11 @@ public class gamepanel extends JPanel implements Runnable{
             Player.Bullt.checkCollision(enemies, this);
         }
         
-        globFlag = enemies.size() == 0;
-        if(globFlag){
+        if(enemies.size() == 0){
             level++;
             addEnemy();
-            globFlag = false;
+        }else{
+            //when there is still an enemy in one line
         }
     }
     
@@ -134,20 +134,31 @@ public class gamepanel extends JPanel implements Runnable{
     
     public void addEnemy(){
         int size = 3 + level;
+        if(size >= maxScreenColumn) size = maxScreenColumn;
         enemiesLeft = size;
-        for(int i = 0; i< size; i++){
-            int xpos, ypos = 0, prevx = -1;
+        for(int i = 0; i< enemiesLeft; i++){
+            int xcol, ypos = 0;
             Random random = new Random();
             
             do{
-                xpos = random.nextInt(ScreenWidth - tileSize);
-            }while(xpos == prevx);
-            prevx = xpos;
-
-            enemy enemy = new enemy(xpos, ypos, tileSize, tileSize);
+                xcol = random.nextInt(ScreenWidth) / tileSize;
+            }while(iscolumnOccupied(xcol));
+            enemy enemy = new enemy(xcol*tileSize, ypos, tileSize, tileSize);
             enemies.add(enemy);
         }    
+        
     }
     
+    
+    public boolean iscolumnOccupied(int pos){
+        for(int i = 0; i<enemies.size(); i++){
+            
+            if(pos == enemies.get(i).x/tileSize){
+                return true;
+            }
+        }
+        
+        return false;
+    }
 }
 

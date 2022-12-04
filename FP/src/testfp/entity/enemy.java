@@ -48,8 +48,6 @@ public class enemy extends Sprite{
     }
     
     public void draw(Graphics g){
-//        g.setColor(Color.red);
-//        g.fillRect(x, y, 16, 16);
           g.drawImage(t1, x, y, width, height, null);
     }
     

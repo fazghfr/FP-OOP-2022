@@ -41,17 +41,14 @@ public class bullet extends Sprite{
         g.drawImage(idle1, x, y, width, height, null);
     }
     
-    public int a= 0;
     
     public void checkCollision(ArrayList<enemy> Enemy, gamepanel gp){
         for(int i = 0; i < Enemy.size(); i++){
             enemy Enemies = Enemy.get(i);
             if( (y < Enemies.y + gp.tileSize && y > 0)&& (x > Enemies.x && x<Enemies.x+gp.tileSize)){
                 Enemies.isDead = true;
-                
-                if(Enemies.isDead){
-                    Enemy.remove(Enemies);
-                }
+                this.y = -1;
+                Enemy.remove(i);
             }
         }
     }

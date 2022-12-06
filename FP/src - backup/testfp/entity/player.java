@@ -22,15 +22,13 @@ import testfp.gamepanel;
  * @author fauza
  */
 public class player extends Sprite{
-    public boolean readyToShoot = true, shot = false, isDead = false;
+    public boolean readyToShoot = true, shot = false;
     gamepanel gp;
-    int w, h;
     KeyHandler kh;
     Rectangle Bullet;
-    
     public bullet Bullt;
     int bspeed;
-    public int by,bx, killcount = 0;
+    public int by,bx;
     
     public player(gamepanel gp, KeyHandler kh){
         this.gp = gp;
@@ -55,9 +53,6 @@ public class player extends Sprite{
             left2 = ImageIO.read(getClass().getResourceAsStream("/media/shipleft2.png"));
             idle2 = ImageIO.read(getClass().getResourceAsStream("/media/shipidle2.png"));
             right2 = ImageIO.read(getClass().getResourceAsStream("/media/shipright2.png"));
-            
-            w = idle1.getWidth();
-            h = idle1.getHeight();
         } catch (IOException ex) {
             Logger.getLogger(player.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -90,19 +85,14 @@ public class player extends Sprite{
                 by = y;
                 Bullt = new bullet(x+12, y+8, gp.tileSize/2, gp.tileSize/2);
                 Bullt.speed += gp.getLevel();
-                if(Bullt.speed >= Bullt.getMaxSpeed()){
-                    Bullt.speed = Bullt.getMaxSpeed();
-                }
                 bspeed = Bullt.speed;
                 shot = true;
             }
             
           
         } 
-        
-        if(shot){
-            shoot();
-        }
+
+        shoot();
         
         if(y < 0){
             y = 0;
@@ -157,7 +147,7 @@ public class player extends Sprite{
                 }               
                 break;
         }
-        g2.drawImage(img, x, y, gp.tileSize, gp.tileSize + 8, null);
+        g2.drawImage(img, x, y, gp.tileSize, gp.tileSize, null);
         if(shot){
             Bullt.draw(g2);
         }

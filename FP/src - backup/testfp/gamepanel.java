@@ -6,7 +6,6 @@ package testfp;
 
 import java.awt.Color;
 import java.awt.Dimension;
-import java.awt.Font;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.util.ArrayList;
@@ -24,20 +23,19 @@ import testfp.entity.player;
  */
 public class gamepanel extends JPanel implements Runnable{
     //setting
-    final int originalTileSize = commons.ORI_TILESIZE.value;
-    final int scale = commons._SCALE.value;
+    final int originalTileSize = 16;
+    final int scale = 3;
     
     public final int tileSize = originalTileSize * scale;
-    public final int maxScreenColumn = commons.SCR_COLUMN.value;
-    public final int maxScreenRow = commons.SCR_ROW.value;
+    public final int maxScreenColumn = 9;
+    public final int maxScreenRow = 16;
     public final int ScreenWidth = tileSize * maxScreenColumn;
     public final int ScreenHeight = tileSize * maxScreenRow;
     
     //fps
-    final int FPS = commons._FPS.value;
+    final int FPS = 120;
     
     //things inside of the game
-    boolean isGameOver = false;
     KeyHandler kh = new KeyHandler();
     Thread gameThread;
     player Player = new player(this, kh);
@@ -70,9 +68,9 @@ public class gamepanel extends JPanel implements Runnable{
         double drawInterval = 1000000000/FPS;
         double nextDrawTime = System.nanoTime() - drawInterval;
         
-        while(gameThread != null && !isGameOver){
+        while(gameThread != null){
             update();//updating the position
-            repaint();//repaint the character with its updated position
+            repaint();//repaint the character with the updated position
             
             try {
                 double remainingTime = nextDrawTime - System.nanoTime();
@@ -89,65 +87,35 @@ public class gamepanel extends JPanel implements Runnable{
                 Logger.getLogger(gamepanel.class.getName()).log(Level.SEVERE, null, ex);
             }
         }
-        
-        System.out.println("kill count = " +Player.killcount);//p_malem
     }
     
+    boolean globFlag = true;
     
     public void update(){
         Player.update();
         if(Player.shot){
-            Player.Bullt.checkCollision(enemies, this, Player);
+            Player.Bullt.checkCollision(enemies, this);
         }
         
         if(enemies.size() == 0){
-            if(level != commons.GAME_MAXLEVEL.value){
-                levelUp();
-            }else{
-                isGameOver = true;//p_malem
-            }
-        }else if(!Player.isDead){
-            updateEnemies(enemies);
+            level++;
+            addEnemy();
         }else{
-            isGameOver = true;
+            updateEnemies(enemies);
         }
         
         checkEnemyPos();
     }
     
-    public void levelUp(){
-        level++;
-        addEnemy();
-    }
-    
     @Override
     public void paintComponent(Graphics g){
         super.paintComponent(g);
-        Graphics2D g2 = (Graphics2D) g;
         
-        g.setColor(Color.WHITE);
-        g.setFont(new Font("MV Boli", Font.BOLD, 45));
-        if(!isGameOver){
-            
-            drawEnemy(g2);
-            Player.draw(g2);
-            
-            g.setFont(new Font("MV Boli", Font.BOLD, 12));
-            g.drawString("Kill Count = " +Player.killcount, tileSize * (maxScreenColumn/2), tileSize * (maxScreenRow-1));
-
-            g2.dispose();
-        }
-        else{
-            drawEnemy(g2);
-            Player.draw(g2);
-            
-            
-            if(!Player.isDead){
-                g.drawString("You've Won!", 2*tileSize - 8, ScreenHeight/3);
-            }else{
-                g.drawString("You've lost", 2*tileSize - 8, ScreenHeight/3);
-            }
-        }
+        Graphics2D g2 = (Graphics2D) g;
+        drawEnemy(g2);
+        Player.draw(g2);
+        
+        g2.dispose();
     } 
     
     public void drawEnemy(Graphics2D g){
@@ -158,13 +126,10 @@ public class gamepanel extends JPanel implements Runnable{
     
     public void addEnemy(){
         int size = 1 + level;
-        
-        if(size >= maxScreenColumn - 1) size = maxScreenColumn - 1;
+        if(size >= maxScreenColumn - maxScreenColumn/3) size = maxScreenColumn - maxScreenColumn/3;
         enemiesLeft = size;
-        
-        int yFirstBatch = -tileSize;
-        for(int i = 0; i< enemiesLeft/2; i++){
-            int xcol, ypos = yFirstBatch;
+        for(int i = 0; i< enemiesLeft; i++){
+            int xcol, ypos = 0;
             Random random = new Random();
             
             do{
@@ -172,18 +137,8 @@ public class gamepanel extends JPanel implements Runnable{
             }while(iscolumnOccupied(xcol));
             enemy enemy = new enemy(xcol*tileSize, ypos, tileSize, tileSize);
             enemies.add(enemy);
-        }
+        }    
         
-        for(int i = enemiesLeft/2; i< enemiesLeft; i++){
-            int xcol, ypos = yFirstBatch - 3*tileSize;
-            Random random = new Random();
-            
-            do{
-                xcol = random.nextInt(ScreenWidth) / tileSize;
-            }while(iscolumnOccupied(xcol));
-            enemy enemy = new enemy(xcol*tileSize, ypos, tileSize, tileSize);
-            enemies.add(enemy);
-        }     
     }
 
     public void updateEnemies(ArrayList<enemy> e){
@@ -194,12 +149,8 @@ public class gamepanel extends JPanel implements Runnable{
     }
     
     public void checkEnemyPos(){
-        if(enemies.size()==0){
-            return;
-        }
-        
-        if( enemies.get(0).y > ScreenHeight){
-            Player.isDead = true;
+        if(enemies.get(0).y > ScreenHeight){
+            enemies.clear();
         }
     }
     

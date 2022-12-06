@@ -24,8 +24,10 @@ import testfp.gamepanel;
  */
 public class enemy extends Sprite{
     public String typeEnemy;
+    public boolean isDead = false;
     public BufferedImage t1, t2, t3;
-    int width, height, num;
+    public int maxSpeed = 6;
+    int width, height;
 
     
     public enemy(int x, int y, int h, int w){
@@ -39,8 +41,8 @@ public class enemy extends Sprite{
     
     private void setImageType(){
         try {
-            t1 = (ImageIO.read(getClass().getResourceAsStream("/media/enemy.png")));
-            t2 = (ImageIO.read(getClass().getResourceAsStream("/media/enemy2.png")));;
+            t1 = (ImageIO.read(getClass().getResourceAsStream("/media/shipidle.png")));
+            t2 = (ImageIO.read(getClass().getResourceAsStream("/media/shipidle.png")));;
             t3 = (ImageIO.read(getClass().getResourceAsStream("/media/shipidle.png")));;
         } catch (IOException ex) {
             Logger.getLogger(enemy.class.getName()).log(Level.SEVERE, null, ex);
@@ -49,19 +51,11 @@ public class enemy extends Sprite{
     
     public void update(gamepanel gp){
         y += speed;
-        num = gp.getLevel();
     }
 
     
     public void draw(Graphics g){
-          BufferedImage img = null;
-          
-          int det = num;
-          img = switch (det%2) {
-            case 0 -> t1;
-            default -> t2;
-        };
-          g.drawImage(img, x, y, width, height, null);
+          g.drawImage(t1, x, y, width, height, null);
     }
     
     public BufferedImage rotateImage(BufferedImage img){

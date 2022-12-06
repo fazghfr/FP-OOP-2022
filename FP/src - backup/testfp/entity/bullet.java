@@ -12,7 +12,6 @@ import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.imageio.ImageIO;
-import testfp.commons;
 import testfp.gamepanel;
 
 /**
@@ -21,13 +20,6 @@ import testfp.gamepanel;
  */
 public class bullet extends Sprite{
     public int width, height;
-    private int maxSpeed = commons.BULLET_MAXSPEED.value;
-    public int getMaxSpeed(){
-        return maxSpeed;
-    }
-    public void setMaxSpeed(int maxSpeed){
-        this.maxSpeed = maxSpeed;
-    }
     
     public bullet(int xpos, int ypos, int w, int h){
         x = xpos;
@@ -40,7 +32,7 @@ public class bullet extends Sprite{
     
     public void setImage(){
         try {
-            idle1 = ImageIO.read(getClass().getResourceAsStream("/media/bullet.png"));
+            idle1 = ImageIO.read(getClass().getResourceAsStream("/media/shipidle.png"));
         } catch (IOException ex) {
             Logger.getLogger(bullet.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -51,12 +43,11 @@ public class bullet extends Sprite{
     }
     
     
-    public void checkCollision(ArrayList<enemy> Enemy, gamepanel gp, player p){
+    public void checkCollision(ArrayList<enemy> Enemy, gamepanel gp){
         for(int i = 0; i < Enemy.size(); i++){
             enemy Enemies = Enemy.get(i);
             if( (y < Enemies.y + gp.tileSize && y > 0)&& (x > Enemies.x && x<Enemies.x+gp.tileSize)){
-                Enemies.setDead();
-                p.killcount++;
+                Enemies.isDead = true;
                 this.y = -gp.tileSize;
                 Enemy.remove(i);
             }

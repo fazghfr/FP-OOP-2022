@@ -4,13 +4,10 @@
  */
 package testfp.entity;
 
-import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
-import java.awt.Rectangle;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
-import java.util.ArrayList;
 import java.util.Random;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -22,10 +19,10 @@ import testfp.gamepanel;
  *
  * @author fauza
  */
-public class enemy extends Sprite{
+public class enemy extends Sprite implements hostile{
     public String typeEnemy;
     public BufferedImage t1, t2, t3;
-    int width, height, num;
+    int width, height, num, det = 0;//det untuk keperluan highscore
 
     
     public enemy(int x, int y, int h, int w){
@@ -45,11 +42,6 @@ public class enemy extends Sprite{
         } catch (IOException ex) {
             Logger.getLogger(enemy.class.getName()).log(Level.SEVERE, null, ex);
         }
-    }
-    
-    public void update(gamepanel gp){
-        y += speed;
-        num = gp.getLevel();
     }
 
     
@@ -87,6 +79,30 @@ public class enemy extends Sprite{
                 idle1 = t3;
                 break;
         }
+    }
+    
+    public void setDet(){
+        this.det = 1;
+    }
+
+    @Override
+    public boolean deathStatus() {
+        return isDead;
+    }
+
+    @Override
+    public void setDead() {
+        this.isDead = true;
+    }
+
+    @Override
+    public void update(gamepanel gp) {
+        if(det==0){
+            y += speed;
+        }else{
+            y += speed+det;
+        }
+        num = gp.getLevel();
     }
 
     

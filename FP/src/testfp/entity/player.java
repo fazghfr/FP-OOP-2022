@@ -14,15 +14,18 @@ import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.imageio.ImageIO;
+import javax.sound.sampled.LineUnavailableException;
 import testfp.KeyHandler;
 import testfp.gamepanel;
+import testfp.music;
+import testfp.state;
 
 /**
  *
  * @author fauza
  */
 public class player extends Sprite{
-    public boolean readyToShoot = true, shot = false, isDead = false;
+    public boolean readyToShoot = true, shot = false;
     gamepanel gp;
     int w, h;
     KeyHandler kh;
@@ -31,6 +34,7 @@ public class player extends Sprite{
     public bullet Bullt;
     int bspeed;
     public int by,bx, killcount = 0;
+    public String playerName;
     
     public player(gamepanel gp, KeyHandler kh){
         this.gp = gp;
@@ -80,6 +84,7 @@ public class player extends Sprite{
             direction = "right";
             x += speed;
         }
+        
         else if(kh.shootPressed ==  true){
             if(Bullt ==  null){
                 readyToShoot = true;
@@ -95,6 +100,13 @@ public class player extends Sprite{
                 }
                 bspeed = Bullt.speed;
                 shot = true;
+                music sfx = null;
+                try {
+                    sfx = new music();
+                } catch (LineUnavailableException ex) {
+                    Logger.getLogger(player.class.getName()).log(Level.SEVERE, null, ex);
+                }
+                sfx.playFx("src/media/shotsfx.wav");
             }
             
           
@@ -172,8 +184,17 @@ public class player extends Sprite{
         if(by < 0){
             readyToShoot = true;
         }else{
-            readyToShoot = false;
-            
+            readyToShoot = false;  
         }
+    }
+
+    @Override
+    public boolean deathStatus() {
+        return isDead;
+    }
+
+    @Override
+    public void setDead() {
+        isDead = true;
     }
 }

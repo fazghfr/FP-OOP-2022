@@ -17,7 +17,7 @@ public enum commons {
     BULLET_MAXSPEED(19),
     ENEMY_SPEED(1),
     ENEMY_MAXSPEED(4),
-    GAME_MAXLEVEL(15),
+    GAME_MAXLEVEL(20),
     INIT_LEVEL(0),
      _FPS(120), 
     _SCALE(3);

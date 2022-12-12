@@ -5,6 +5,11 @@
 package testfp;
 
 import javax.swing.JFrame;
+import java.awt.Toolkit;
+import java.awt.Dimension;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.sound.sampled.LineUnavailableException;
 
 /**
  *
@@ -16,20 +21,11 @@ public class Testfp {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        JFrame window =  new JFrame();
-        window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        
-        window.setTitle("Final Project");
-        
-        gamepanel gamePanel = new gamepanel();
-        window.add(gamePanel);
-        window.pack();
-        window.setResizable(false);
-        window.setVisible(true);
-        
-        
-        gamePanel.startGameThread();
-        
+        try {
+            gamepanel.initGamePanel();
+        } catch (LineUnavailableException ex) {
+            Logger.getLogger(Testfp.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
     
 }

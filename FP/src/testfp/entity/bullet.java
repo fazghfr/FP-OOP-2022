@@ -12,8 +12,10 @@ import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.imageio.ImageIO;
+import javax.sound.sampled.LineUnavailableException;
 import testfp.commons;
 import testfp.gamepanel;
+import testfp.music;
 
 /**
  *
@@ -56,10 +58,27 @@ public class bullet extends Sprite{
             enemy Enemies = Enemy.get(i);
             if( (y < Enemies.y + gp.tileSize && y > 0)&& (x > Enemies.x && x<Enemies.x+gp.tileSize)){
                 Enemies.setDead();
+                music sfx = null;
+                try {
+                    sfx = new music();
+                } catch (LineUnavailableException ex) {
+                    Logger.getLogger(bullet.class.getName()).log(Level.SEVERE, null, ex);
+                }
+                sfx.playFx("src/media/explosion.wav");
                 p.killcount++;
                 this.y = -gp.tileSize;
                 Enemy.remove(i);
             }
         }
+    }
+
+    @Override
+    public boolean deathStatus() {
+        return isDead;
+    }
+
+    @Override
+    public void setDead() {
+        isDead = true;
     }
 }

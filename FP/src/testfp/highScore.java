@@ -212,6 +212,7 @@ public class highScore extends JPanel implements frame{
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
     
+    @Override
     public int getXCenteredStringPos(Graphics2D g, String str){
         int length = (int)g.getFontMetrics().getStringBounds(str, g).getWidth();
         return (screenWidth/2 - length/2);        

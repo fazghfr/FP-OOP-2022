@@ -1,6 +1,7 @@
- # Poster FP PBO - SPACE DEFENDERS
+ # FP PBO - SPACE DEFENDERS
+ ### Ahmad Fauzan Alghifari 5025211091
+
   ![posterFPPBO](https://user-images.githubusercontent.com/96367502/207291199-05bf190a-9ac1-44f5-bdad-14625b77eeba.png)
-### Ahmad Fauzan Alghifari 5025211091
 
 Final project PBO semester ini, saya berencana untuk membuat sebuah game. Rencana pertama saya adalah membuat game seperti game space invaders. Dimana pemain harus mengalahkan banyak musuh di langit. Musuhnya akan terus mendekat, ke pemain, dan Ketika musuh berhasil mencapai pemain, maka pemain akan kalah.  Kesimpulan, saya akan membuat Game seperti Space invaders yang sama namakan Space Defenders, dengan GUI yang akan saya usahakan pakai adalah Swing.
 

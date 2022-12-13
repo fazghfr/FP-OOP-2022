@@ -57,19 +57,19 @@ https://youtu.be/enYvmQeSagY
 
 
 # Referensi
--> Sorting File .txt
-   https://stackoverflow.com/questions/740936/how-do-i-sort-records-in-a-text-file-using-java
--> Tutorial YT
-  https://www.youtube.com/watch?v=VpH33Uw-_0E&list=PL_QPQmz5C6WUF-pOQDsbsKbaBZqXj4qSq&index=2&ab_channel=RyiSnow
-  https://www.youtube.com/watch?v=_SJU99LU1IQ&t=887s&ab_channel=RyiSnow
--> Game Asset 
-  https://ansimuz.itch.io/spaceship-shooter-environment
-  https://opengameart.org/sites/default/files/16ShipCollection.png
--> Music / SFX
-  SFX explosion https://youtu.be/qHUOQ5elnFU
-  SFX laser https://youtube.com/shorts/FsLkXXOyeRI?feature=share
-  BgMusic Game https://youtu.be/OuRvOCf9mJ4
-  BgMusic Menu https://youtu.be/0njLoYAHvhI
+1. Sorting File .txt
+   * https://stackoverflow.com/questions/740936/how-do-i-sort-records-in-a-text-file-using-java
+2. Tutorial YT
+  - https://www.youtube.com/watch?v=VpH33Uw-_0E&list=PL_QPQmz5C6WUF-pOQDsbsKbaBZqXj4qSq&index=2&ab_channel=RyiSnow
+  * https://www.youtube.com/watch?v=_SJU99LU1IQ&t=887s&ab_channel=RyiSnow
+3. Game Asset 
+  * https://ansimuz.itch.io/spaceship-shooter-environment
+  - https://opengameart.org/sites/default/files/16ShipCollection.png
+4. Music / SFX
+  - SFX explosion https://youtu.be/qHUOQ5elnFU
+  - SFX laser https://youtube.com/shorts/FsLkXXOyeRI?feature=share
+  - BgMusic Game https://youtu.be/OuRvOCf9mJ4
+  - BgMusic Menu https://youtu.be/0njLoYAHvhI
   
   
   

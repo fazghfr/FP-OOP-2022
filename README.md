@@ -84,10 +84,10 @@ https://github.com/fazghfr/FP-OOP-2022/blob/b8422017ec6121771eed91792e5371116a26
 ## 15. Input Output (I/O)
 Untuk input output dalam project ini adalah berupa data highScore. jadi setiap kali suatu pemain mendapatkan poin, maka data tersebut akan di store di dalam file scores.txt. inputnya adalah nama dan skor dari pemain, dan outputnya adalah data highscore dalam bentuk txt, yang juga dapat ditampilkan pada menu highscore/ranks.
 
-input
+output
 https://github.com/fazghfr/FP-OOP-2022/blob/b8422017ec6121771eed91792e5371116a26420d/FP/src/testfp/highScore.java#L162-L181
 
-output
+input
 https://github.com/fazghfr/FP-OOP-2022/blob/b8422017ec6121771eed91792e5371116a26420d/FP/src/testfp/highScore.java#L100-L114
 
 

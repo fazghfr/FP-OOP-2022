@@ -3,6 +3,8 @@
 
 Final project PBO semester ini, saya berencana untuk membuat sebuah game. Rencana pertama saya adalah membuat game seperti game space invaders. Dimana pemain harus mengalahkan banyak musuh di langit. Musuhnya akan terus mendekat, ke pemain, dan Ketika musuh berhasil mencapai pemain, maka pemain akan kalah.  Kesimpulan, saya akan membuat Game seperti Space invaders yang sama namakan Space Defenders, dengan GUI yang akan saya usahakan pakai adalah Swing.
 
+
+
 Penjelasan gamenya, pemain dikatakan menang jika berhasil mengalahkan semua musuhnya, dan pemain dikatakan kalah jika musuh berhasil datang ke area awal pemain.
 
 Aspek OOP/PBO yang dipakai adalah sebagai berikut :
@@ -58,7 +60,7 @@ https://youtu.be/enYvmQeSagY
 
 # Referensi
 1. Sorting File .txt
-   * https://stackoverflow.com/questions/740936/how-do-i-sort-records-in-a-text-file-using-java
+  - https://stackoverflow.com/questions/740936/how-do-i-sort-records-in-a-text-file-using-java
 2. Tutorial YT
   - https://www.youtube.com/watch?v=VpH33Uw-_0E&list=PL_QPQmz5C6WUF-pOQDsbsKbaBZqXj4qSq&index=2&ab_channel=RyiSnow
   * https://www.youtube.com/watch?v=_SJU99LU1IQ&t=887s&ab_channel=RyiSnow

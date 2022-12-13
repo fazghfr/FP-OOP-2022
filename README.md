@@ -3,9 +3,6 @@
 
 Final project PBO semester ini, saya berencana untuk membuat sebuah game. Rencana pertama saya adalah membuat game seperti game space invaders. Dimana pemain harus mengalahkan banyak musuh di langit. Musuhnya akan terus mendekat, ke pemain, dan Ketika musuh berhasil mencapai pemain, maka pemain akan kalah.  Kesimpulan, saya akan membuat Game seperti Space invaders yang sama namakan Space Defenders, dengan GUI yang akan saya usahakan pakai adalah Swing.
 
-![mainmenusd](https://user-images.githubusercontent.com/96367502/207253282-db1bf79b-2b10-4fe0-bcfa-c583ade6f8f4.png)
-
-
 Penjelasan gamenya, pemain dikatakan menang jika berhasil mengalahkan semua musuhnya, dan pemain dikatakan kalah jika musuh berhasil datang ke area awal pemain.
 
 Aspek OOP/PBO yang dipakai adalah sebagai berikut :
@@ -113,6 +110,7 @@ https://youtu.be/enYvmQeSagY
   - BgMusic Game https://youtu.be/OuRvOCf9mJ4
   - BgMusic Menu https://youtu.be/0njLoYAHvhI
   
+  ![mainmenusd](https://user-images.githubusercontent.com/96367502/207253282-db1bf79b-2b10-4fe0-bcfa-c583ade6f8f4.png)
   
   
 

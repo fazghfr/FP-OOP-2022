@@ -51,3 +51,26 @@ Collection digunakan pada method sorting di **highScore.java**, pada method sort
 
 ## 15. Input Output (I/O)
 Untuk input output dalam project ini adalah berupa data highScore. jadi setiap kali suatu pemain mendapatkan poin, maka data tersebut akan di store di dalam file scores.txt. inputnya adalah nama dan skor dari pemain, dan outputnya adalah data highscore dalam bentuk txt, yang juga dapat ditampilkan pada menu highscore/ranks.
+
+## Video Demo :
+https://youtu.be/enYvmQeSagY
+
+
+# Referensi
+-> Sorting File .txt
+   https://stackoverflow.com/questions/740936/how-do-i-sort-records-in-a-text-file-using-java
+-> Tutorial YT
+  https://www.youtube.com/watch?v=VpH33Uw-_0E&list=PL_QPQmz5C6WUF-pOQDsbsKbaBZqXj4qSq&index=2&ab_channel=RyiSnow
+  https://www.youtube.com/watch?v=_SJU99LU1IQ&t=887s&ab_channel=RyiSnow
+-> Game Asset 
+  https://ansimuz.itch.io/spaceship-shooter-environment
+  https://opengameart.org/sites/default/files/16ShipCollection.png
+-> Music / SFX
+  SFX explosion https://youtu.be/qHUOQ5elnFU
+  SFX laser https://youtube.com/shorts/FsLkXXOyeRI?feature=share
+  BgMusic Game https://youtu.be/OuRvOCf9mJ4
+  BgMusic Menu https://youtu.be/0njLoYAHvhI
+  
+  
+  
+
